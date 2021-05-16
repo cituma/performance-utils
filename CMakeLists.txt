@@ -19,10 +19,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 #find_package(OpenCV REQUIRED)
 #include_directories(${OpenCV_INCLUDE_DIRS})
 
-include_directories(${PROJECT_SOURCE_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/utils)
 
 set(MMULT_LIB mmult)
-add_subdirectory(cpu_gemm)
+set(FOLLY_LIB folly)
+#add_subdirectory(cpu_gemm)
+add_subdirectory(utils/folly)
 add_subdirectory(unittest)
 
 # print
