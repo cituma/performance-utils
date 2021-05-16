@@ -19,29 +19,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 #find_package(OpenCV REQUIRED)
 #include_directories(${OpenCV_INCLUDE_DIRS})
 
+include_directories(${PROJECT_SOURCE_DIR})
+
 set(MMULT_LIB mmult)
-file(GLOB mmult_srcs "cpu_gemm/mmult/*.cpp")
-add_library(
-    ${MMULT_LIB}
-    ${mmult_srcs}
-    )
-add_executable(
-    gemm_demo
-    "cpu_gemm/main.cpp"
-    )
-
-target_link_libraries(
-    gemm_demo
-    ${MMULT_LIB}
-    ${OpenCV_LIBRARIES}
-    )
-if(ANDROID)
-    target_link_libraries(
-        gemm_demo
-        PUBLIC log
-    )
-endif()
-
+add_subdirectory(cpu_gemm)
 add_subdirectory(unittest)
 
 # print
