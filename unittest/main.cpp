@@ -1,6 +1,4 @@
 #include <gtest/gtest.h>
-#include "folly/MicroSpinLock.h"
-#include "folly/RWSpinLock.h"
 
 int foobar(void)
 {
